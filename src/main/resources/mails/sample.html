@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:remove="all">Template for HTML email with inline image</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css"
+              rel="stylesheet" media="screen"/>
+    </head>
+    <body>
+
+        <div style="background-color: #ccc; background-image: url(images/background.jpg); margin-left: 2%;"
+             data-th-style="|background-color: #ccc; background-image: url(cid:background)|">
+            <div>
+                <img style=""
+                     src="images/thymeleaf-banner.png" data-th-src="|cid:thymeleaf-banner|" />
+            </div>
+            <hr/>
+
+            <div style="color:black;">
+                <h1 style=" color: aquamarine; margin-left: 2%;">We open you doors of Heaven</h1>
+
+                <p style=" color: black;" >
+                    You have been successfully subscribed to the <b>MOInvestments</b>  advice letter on day
+                    <span th:text="${#dates.format(subscriptionDate)}">28-12-2012</span>
+                </p>
+
+                <h3 style=" color: aquamarine;  margin-left: 2%;">Top coins for today are</h3>
+                <p>(<span th:text="${#dates.format(subscriptionDate)}">28-12-2012</span>)</p>
+
+
+
+                <!--                
+                                <table style="border-collapse: collapse;
+                                       width: 100%;">
+                                    <tr >
+                                        <th>RANK</th>
+                                        <th>NAME</th>
+                                        <th>MARKET CAPITALIZATION</th>
+                                        <th>PRICE</th>
+                                        <th>CIRCULATING SUPPLY</th>
+                                        <th>VOLUME 24H</th>
+                                        <th>CHANGE</th>
+                                    </tr>
+                                    <tr th:each="hobby : ${hobbies}" style="padding: 15px;">
+                                        <td th:text="${hobby?.rank}">Onions</td>
+                                        <td th:text="${hobby?.name}">Onions</td>
+                                        <td th:text="${hobby?.marketCap}">Onions</td>
+                                        <td th:text="${hobby?.price}">Onions</td>
+                                        <td th:text="${hobby?.CirculatingSupply}">Onions</td>
+                                        <td th:text="${hobby?.volume24H}">Onions</td>
+                                        <td th:text="${hobby?.change}" >Onions</td>
+                                        th:style="${ #strings.startsWith(hobby.change,'-') ? 'color:red;font-weight: bold;' : 'color:green;font-weight: bold;' }
+                
+                                    </tr>
+                                </table>-->
+                <h4 style=" color: aquamarine; margin-left: 2%;">Coins with the greatest Value for the long term investments are :</h4>
+
+                
+                <table style="border-collapse: collapse;
+                       width: 100%;">
+                    <thead style=" width: 4rem;
+                           height: 2rem;
+                           border: 1px solid #ccc;
+                           text-align: center;background: lightblue;
+                           border-color: white;">
+                        <tr >
+                            <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>CHANGE LAST 24H</th>
+
+                        </tr>
+                    </thead>
+                    <tbody style="padding: 1rem;text-align: center;">
+                        <tr th:each="coin : ${sugcoins}" style="">
+
+                    <h2 th:text="${coin?.name}" style="color: aquamarine;" >Onions</h2>
+                    <td th:text="'$ ' + ${coin?.price}  " style="font-weight: bold" >Onions</td>
+                    <td th:text="${coin?.change} + '%'"  th:style="${coin?.change  &lt; 0  ? 'color:red; font-weight: bold;' : 'color:green; font-weight: bold;' } ">Onions</td>
+                    <!--th:style="${ #strings.startsWith(hobby.change,'-') ? 'color:red;font-weight: bold;' : 'color:green;font-weight: bold;' }-->
+
+                    </tr>
+                    </tbody>
+                </table>
+                
+                
+              
+                <hr/>
+                <p style=" color: black;  font-weight: bold;" >Please keep in mind that we are not responsible for your decisions at the exchange.<br/>
+                    This tips are just suggestions that we find valuable to our customers</p>
+
+                <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-width: 0px; border: 0px; margin: 0; padding: 0;">
+                    <tr><td valign="top" style="padding-top: 0; padding-bottom: 0; padding-left: 0; padding-right: 7px; border-top: 0; border-bottom: 0: border-left: 0; border-right: solid 3px #F7751F"><img id="preview-image-url" style="width:200px;" alt="Alt" src="http://i.imgur.com/WeZgMkg.png" /></td>
+                        <td style="padding-top: 0; padding-bottom: 0; padding-left: 12px; padding-right: 0;">
+                            <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-width: 0px; border: 0px; margin: 0; padding: 0;">
+                                <tr><td colspan="2" style="padding-bottom: 5px; color: #F7751F; font-size: 18px; font-family: Arial, Helvetica, sans-serif;">MOInvestments Limited</td></tr>
+                                <tr><td width="20" valign="top" style="vertical-align: top; width: 20px; color: #F7751F; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">p:</td><td valign="top" style="vertical-align: top; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">+385 099 699 17 11</td></tr>
+                                <tr><td width="20" valign="top" style="vertical-align: top; width: 20px; color: #F7751F; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">a:</td><td valign="top" style="vertical-align: top; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">Heinzelova 33 Zagreb</td></tr>
+                                <tr><td width="20" valign="top" style="vertical-align: top; width: 20px; color: #F7751F; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">BTC </td><td valign="top" style="vertical-align: top; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">1y8s4NXzL7RHkwjcCwCcnPxuL4wAfyWWy</td></tr>
+
+                            </table>
+                        </td></tr></table>
+
+
+            </div>
+        </div>
+    </body>
+</html>

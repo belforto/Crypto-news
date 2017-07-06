@@ -1,0 +1,9 @@
+hello\email\EmailServiceImpl.class
+hello\email\ThymeleafEmailConfiguration.class
+hello\model\recipients\RecipientsDAO.class
+hello\jobs\ScheduledTasks.class
+hello\model\Crypto.class
+hello\businessLogic\Rules.class
+hello\model\recipients\Recipients.class
+hello\Application.class
+hello\model\CoinValidator.class
